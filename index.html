@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, World ✨</title>
+  <style>
+    :root {
+      --bg-1: #0f0c29;
+      --bg-2: #302b63;
+      --bg-3: #24243e;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body { height: 100%; }
+
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: linear-gradient(-45deg, var(--bg-1), var(--bg-2), var(--bg-3), #1a1a40);
+      background-size: 400% 400%;
+      animation: gradientShift 16s ease infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    @keyframes gradientShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating decorative blobs */
+    .blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.5;
+      z-index: 0;
+      animation: float 12s ease-in-out infinite;
+    }
+    .blob.one   { width: 320px; height: 320px; background: #ff6ec4; top: -80px; left: -60px; }
+    .blob.two   { width: 280px; height: 280px; background: #7873f5; bottom: -60px; right: -40px; animation-delay: -4s; }
+    .blob.three { width: 200px; height: 200px; background: #42e695; top: 40%; right: 15%; animation-delay: -8s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      33%      { transform: translateY(-30px) translateX(20px); }
+      66%      { transform: translateY(20px) translateX(-15px); }
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 3rem 2rem;
+      backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+      animation: rise 1s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(40px) scale(0.96); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 9vw, 5.5rem);
+      font-weight: 800;
+      letter-spacing: -2px;
+      background: linear-gradient(90deg, #ff6ec4, #7873f5, #42e695, #ff6ec4);
+      background-size: 300% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 6s linear infinite;
+    }
+
+    @keyframes shine {
+      to { background-position: 300% center; }
+    }
+
+    .wave {
+      display: inline-block;
+      animation: wave 2.2s ease-in-out infinite;
+      transform-origin: 70% 70%;
+    }
+
+    @keyframes wave {
+      0%, 60%, 100% { transform: rotate(0deg); }
+      10%, 30%      { transform: rotate(14deg); }
+      20%           { transform: rotate(-8deg); }
+      40%           { transform: rotate(-4deg); }
+      50%           { transform: rotate(10deg); }
+    }
+
+    p.subtitle {
+      margin-top: 1rem;
+      font-size: clamp(0.9rem, 2.5vw, 1.15rem);
+      color: rgba(255, 255, 255, 0.75);
+      letter-spacing: 0.5px;
+    }
+
+    .pill {
+      display: inline-block;
+      margin-top: 1.75rem;
+      padding: 0.55rem 1.4rem;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #fff;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .pill:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="blob one"></div>
+  <div class="blob two"></div>
+  <div class="blob three"></div>
+
+  <main class="card">
+    <h1>Hello, World <span class="wave">👋</span></h1>
+    <p class="subtitle">A tiny page with a little bit of sparkle.</p>
+    <span class="pill" onclick="this.textContent = greetings[(i = (i + 1) % greetings.length)]">
+      Say hi again
+    </span>
+  </main>
+
+  <script>
+    const greetings = [
+      "Say hi again",
+      "¡Hola, mundo!",
+      "Bonjour le monde",
+      "こんにちは世界",
+      "Hallo Welt",
+      "Olá, mundo!",
+      "Ciao, mondo!"
+    ];
+    let i = 0;
+  </script>
+</body>
+</html>
